@@ -27,4 +27,3 @@ func _process(delta):
 	player.position.x += speed
 	$Camera2D.position.x += speed
 	speed = START_SPEED*score/SPEED_MODIFIER
-	print(speed)

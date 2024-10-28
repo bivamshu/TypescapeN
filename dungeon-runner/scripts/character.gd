@@ -1,21 +1,45 @@
-extends CharacterBody2D
+extends Node
 
-@onready var Player = $AnimatedSprite2D
+@onready var line_edit = $LineEdit
 
-const SPEED = 300.0
-const JUMP_VELOCITY = -400.0
+var command_map = {
+	"jump": "_jump",
+	"attack": "_attack",
+	"slide": "_slide",
+	"hook": "_hook"
+}
 
+func _ready():
+	line_edit.visible = false
 
-func _physics_process(delta):
-	# Add the gravity.
-	if not is_on_floor():
-		velocity += get_gravity() * delta
+func _process(delta):
+	if Input.is_action_just_pressed("ui_accept"):
+		if line_edit.visible:
+			process_command(line_edit.text)
+			line_edit.text = ""  # Clear text after command execution
+		line_edit.visible = !line_edit.visible
+		if line_edit.visible:
+			line_edit.grab_focus()
+
+func process_command(command: String):
+	# Convert command to lowercase to ensure case-insensitive matching
+	var normalized_command = command.to_lower()
+	
+	if normalized_command in command_map:
+		call(command_map[normalized_command])
+		
 	else:
-		Player.play("walk")
-	if Input.is_action_just_pressed("ui_accept") and is_on_floor():
-		velocity.y = JUMP_VELOCITY
-		Player.play("jump")
-	
-	
-	move_and_slide()
-	
+		print("Unknown command:", command)
+
+# Command functions
+func _jump():
+	print("Jumping!")
+
+func _attack():
+	print("Attacking!")
+
+func _slide():
+	print("Sliding!")
+
+func _hook():
+	print("Hooking!")
