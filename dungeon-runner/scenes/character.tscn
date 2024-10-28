@@ -169,7 +169,7 @@ frame_progress = 0.442592
 position = Vector2(-1, 6)
 shape = SubResource("CapsuleShape2D_bhbgq")
 
-[node name="LineEdit" type="LineEdit" parent="."]
+[node name="CommandInputField" type="LineEdit" parent="."]
 offset_left = 23.0
 offset_top = -27.0
 offset_right = 143.0
@@ -178,3 +178,4 @@ theme_override_fonts/font = ExtResource("5_jwyxa")
 theme_override_font_sizes/font_size = 8
 placeholder_text = "enter a command"
 draw_control_chars = true
+caret_blink = true

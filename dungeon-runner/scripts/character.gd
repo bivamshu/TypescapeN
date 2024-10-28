@@ -1,6 +1,6 @@
 extends Node
 
-@onready var line_edit = $LineEdit
+@onready var UserCommand = $CommandInputField
 
 var command_map = {
 	"jump": "_jump",
@@ -10,23 +10,23 @@ var command_map = {
 }
 
 func _ready():
-	line_edit.visible = false
+	UserCommand.visible = false 
 
 func _process(delta):
 	if Input.is_action_just_pressed("ui_accept"):
-		if line_edit.visible:
-			process_command(line_edit.text)
-			line_edit.text = ""  # Clear text after command execution
-		line_edit.visible = !line_edit.visible
-		if line_edit.visible:
-			line_edit.grab_focus()
+		if UserCommand.visible:
+			process_command(UserCommand.text)
+			UserCommand.text = ""  # Clear text after command execution
+		UserCommand.visible = !UserCommand.visible
+		if UserCommand.visible:
+			UserCommand.grab_focus()
 
 func process_command(command: String):
 	# Convert command to lowercase to ensure case-insensitive matching
-	var normalized_command = command.to_lower()
+	var finalCommand = command.strip_edges().to_lower()
 	
-	if normalized_command in command_map:
-		call(command_map[normalized_command])
+	if finalCommand in command_map:
+		call(command_map[finalCommand])
 		
 	else:
 		print("Unknown command:", command)
