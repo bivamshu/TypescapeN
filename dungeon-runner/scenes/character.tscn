@@ -147,7 +147,7 @@ animations = [{
 }],
 "loop": true,
 "name": &"walk",
-"speed": 25.0
+"speed": 6.0
 }]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_bhbgq"]
@@ -163,7 +163,7 @@ position = Vector2(0, 3)
 sprite_frames = SubResource("SpriteFrames_s1ruq")
 animation = &"walk"
 autoplay = "walk"
-frame_progress = 0.442592
+frame_progress = 0.32176
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(-1, 6)
@@ -177,5 +177,6 @@ offset_bottom = -1.0
 theme_override_fonts/font = ExtResource("5_jwyxa")
 theme_override_font_sizes/font_size = 8
 placeholder_text = "enter a command"
+expand_to_text_length = true
 draw_control_chars = true
 caret_blink = true
