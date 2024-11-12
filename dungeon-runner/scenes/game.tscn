@@ -18,6 +18,7 @@ transform = Transform2D(3, 0, 0, 3, 0, 0)
 position = Vector2(250, 127)
 
 [node name="StaticBody2D" type="StaticBody2D" parent="."]
+visible = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
 position = Vector2(0, 440)
