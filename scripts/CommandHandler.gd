@@ -2,41 +2,41 @@ extends Node
 
 var command_map = {
 	"jump": "_jump",
-	"attack": "_attack",
-	"slide": "_slide",
-	"hook": "_hook"
+	"run": "_run",
+	"stop": "_stop"
 }
 
-
-var Player  # Declare Player variable
-var PlayerSprite  # Reference to the AnimatedSprite2D
-var is_jumping = false  # Track jump state
+var Player
+var PlayerSprite
 
 func set_player(player):
 	Player = player
-	PlayerSprite = Player.get_node("AnimatedSprite2D")  # Store reference to the AnimatedSprite2D
+	PlayerSprite = Player.get_node("AnimatedSprite2D")
 
 func process_command(command: String):
-	# Convert command to lowercase to ensure case-insensitive matching
-	var finalCommand = command.strip_edges().to_lower()
-	if finalCommand in command_map:
-		call_deferred(command_map[finalCommand])
+	var final_command = command.strip_edges().to_lower()
+	
+	if final_command in command_map:
+		call_deferred(command_map[final_command])
 	else:
 		print("Unknown command:", command)
 
-# Command functions
 func _jump():
-	if not Player.is_jumping and Player.is_on_floor():  # Check if the player can jump
-		PlayerSprite.play("jump")  # Play jump animation
-		Player.velocity.y = Player.jump_velocity  # Apply jump velocity
-		print("jumping")
-		Player.is_jumping = true  # Set jumping state
-		
-func _attack():
-	print("Attacking!")
+	if not Player.is_jumping and Player.is_on_floor():
+		PlayerSprite.play("jump")
+		Player.velocity.y = Player.jump_velocity
+		Player.is_jumping = true
+		print("Jumping!")
 
-func _slide():
-	print("Sliding!")
+func _run():
+	Player.is_running = true  # Set running state
+	Player.velocity.x = Player.player_speed
+	PlayerSprite.play("run")
+	print("Running!")
 
-func _hook():
-	print("Hooking!")
+func _stop():
+	Player.is_running = false  # Clear running state
+	Player.velocity.x = 0
+	if Player.is_on_floor():
+		PlayerSprite.play("idle")
+	print("Stopping!")

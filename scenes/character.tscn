@@ -220,7 +220,7 @@ script = ExtResource("1_k3ag3")
 position = Vector2(0, -0.5)
 scale = Vector2(1.46066, 1.67222)
 sprite_frames = SubResource("SpriteFrames_s1ruq")
-animation = &"attack"
+animation = &"walk"
 autoplay = "idle"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
