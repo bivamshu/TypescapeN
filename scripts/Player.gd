@@ -10,7 +10,7 @@ var gravity = 500
 var jump_velocity = -125
 var player_speed = 100
 var is_jumping = false
-var is_running = false  # New variable to track running state
+var is_running = false 
 
 func _ready():
 	UserCommand.visible = false

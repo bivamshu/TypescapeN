@@ -206,7 +206,7 @@ animations = [{
 }],
 "loop": true,
 "name": &"run",
-"speed": 10.0
+"speed": 12.0
 }]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_jjlhw"]
@@ -220,8 +220,9 @@ script = ExtResource("1_k3ag3")
 position = Vector2(1, -1.43051e-06)
 scale = Vector2(1.46066, 1.67222)
 sprite_frames = SubResource("SpriteFrames_s1ruq")
-animation = &"jump"
+animation = &"run"
 autoplay = "idle"
+frame_progress = 0.569378
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0.5, 2)
@@ -236,6 +237,8 @@ theme_override_fonts/font = ExtResource("5_jwyxa")
 theme_override_font_sizes/font_size = 8
 placeholder_text = "enter a command"
 expand_to_text_length = true
+shortcut_keys_enabled = false
+drag_and_drop_selection_enabled = false
 draw_control_chars = true
 caret_blink = true
 

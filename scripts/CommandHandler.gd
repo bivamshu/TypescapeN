@@ -26,17 +26,14 @@ func _jump():
 		PlayerSprite.play("jump")
 		Player.velocity.y = Player.jump_velocity
 		Player.is_jumping = true
-		print("Jumping!")
 
 func _run():
 	Player.is_running = true  # Set running state
 	Player.velocity.x = Player.player_speed
-	PlayerSprite.play("run")
-	print("Running!")
+	PlayerSprite.play("run")   
 
 func _stop():
 	Player.is_running = false  # Clear running state
 	Player.velocity.x = 0
 	if Player.is_on_floor():
 		PlayerSprite.play("idle")
-	print("Stopping!")
