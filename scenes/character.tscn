@@ -220,9 +220,8 @@ script = ExtResource("1_k3ag3")
 position = Vector2(1, -1.43051e-06)
 scale = Vector2(1.46066, 1.67222)
 sprite_frames = SubResource("SpriteFrames_s1ruq")
-animation = &"run"
+animation = &"jump"
 autoplay = "idle"
-frame_progress = 0.956637
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0.5, 2)
@@ -239,3 +238,7 @@ placeholder_text = "enter a command"
 expand_to_text_length = true
 draw_control_chars = true
 caret_blink = true
+
+[node name="RayCast2D" type="RayCast2D" parent="."]
+position = Vector2(1, 10.5)
+target_position = Vector2(10.5, 1)

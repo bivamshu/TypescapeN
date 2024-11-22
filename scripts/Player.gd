@@ -3,6 +3,7 @@ extends CharacterBody2D
 @onready var UserCommand = $CommandInputField
 @onready var PlayerSprite = $AnimatedSprite2D
 var CommandHandler
+@onready var ray_cast_2d = $RayCast2D
 
 # Physics variables
 var gravity = 500
@@ -48,4 +49,7 @@ func _physics_process(delta):
 		if is_on_floor():  # Only play run animation when on floor
 			PlayerSprite.play("run")
 
+	if ray_cast_2d.is_colliding():
+		PlayerSprite.play("idle")
+		
 	move_and_slide()
