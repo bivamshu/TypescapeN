@@ -1,9 +1,25 @@
-[gd_scene load_steps=4 format=3 uid="uid://c6uqb0pu542hq"]
+[gd_scene load_steps=5 format=3 uid="uid://c6uqb0pu542hq"]
 
 [ext_resource type="PackedScene" uid="uid://duseynrctimsi" path="res://scenes/levels/level_1.tscn" id="2_8w5na"]
 [ext_resource type="PackedScene" uid="uid://bqajbk163myjh" path="res://scenes/character.tscn" id="2_mkp0k"]
 
 [sub_resource type="GDScript" id="GDScript_7x2i4"]
+
+[sub_resource type="GDScript" id="GDScript_ul72g"]
+script/source = "extends Camera2D
+@export var Player : NodePath
+
+# Called when the node enters the scene tree for the first time.
+func _ready():
+	set_process(true)
+
+
+# Called every frame. 'delta' is the elapsed time since the previous frame.
+func _process(delta):
+	if Player:
+		var Player_node = get_node(Player)
+		global_position.x = Player_node.global_position.x
+"
 
 [node name="Game" type="Node2D"]
 script = SubResource("GDScript_7x2i4")
@@ -13,8 +29,14 @@ position = Vector2(-135, -536)
 scale = Vector2(1.07912, 1)
 
 [node name="player" parent="." instance=ExtResource("2_mkp0k")]
-scale = Vector2(1, 1)
+position = Vector2(-120, 99)
+scale = Vector2(0.57, 0.57)
 
 [node name="Camera2D" type="Camera2D" parent="player"]
-position = Vector2(205.5, -81.5)
+position = Vector2(185.965, -80.7018)
+zoom = Vector2(2.81, 2.81)
+limit_top = -200
+limit_bottom = 200
 position_smoothing_enabled = true
+script = SubResource("GDScript_ul72g")
+Player = NodePath("..")

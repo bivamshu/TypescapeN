@@ -6,8 +6,8 @@ var CommandHandler
 
 # Physics variables
 var gravity = 500
-var jump_velocity = -200
-var player_speed = 200
+var jump_velocity = -125
+var player_speed = 100
 var is_jumping = false
 var is_running = false  # New variable to track running state
 
@@ -31,16 +31,17 @@ func _physics_process(delta):
 	if not is_on_floor():
 		velocity.y += gravity * delta
 		is_jumping = true
+		PlayerSprite.play("jump")
 	else:
 		if is_jumping:
 			is_jumping = false
-			if is_running:  # Resume running animation if we were running
-				PlayerSprite.play("run")
-			else:
-				PlayerSprite.play("idle")
+			#if is_running:  # Resume running animation if we were running
+				#PlayerSprite.play("run")
+			#else:
+				#PlayerSprite.play("idle")
 		elif not is_running:  # Only play idle if we're not running
 			PlayerSprite.play("idle")
-	
+		
 	# Maintain running velocity
 	if is_running:
 		velocity.x = player_speed
