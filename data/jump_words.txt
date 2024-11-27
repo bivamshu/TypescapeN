@@ -1,0 +1,15 @@
+hop
+zip
+fly
+up
+jump
+leap
+soar
+dash
+blast
+zoom
+swift
+quick
+spark
+buzz
+ping

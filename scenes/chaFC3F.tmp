@@ -1,10 +1,9 @@
-[gd_scene load_steps=38 format=3 uid="uid://bqajbk163myjh"]
+[gd_scene load_steps=37 format=3 uid="uid://bqajbk163myjh"]
 
 [ext_resource type="Script" path="res://scripts/Player.gd" id="1_k3ag3"]
 [ext_resource type="FontFile" uid="uid://bq67vgs7qy2hl" path="res://assets/fonts/PixelOperator8-Bold.ttf" id="3_bqyrm"]
 [ext_resource type="Texture2D" uid="uid://bn1xlm8awksog" path="res://assets/New Character/body_template.png" id="4_yagx3"]
 [ext_resource type="FontFile" uid="uid://qhh3ydhtd2fj" path="res://assets/fonts/PixelOperator8.ttf" id="5_jwyxa"]
-[ext_resource type="Script" path="res://scripts/character_state_machine.gd" id="5_m2wcr"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_npiow"]
 atlas = ExtResource("4_yagx3")
@@ -245,6 +244,9 @@ Label/fonts/font = ExtResource("5_jwyxa")
 z_index = 5
 scale = Vector2(2, 2)
 script = ExtResource("1_k3ag3")
+gravity = null
+jump_force = null
+move_speed = null
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 position = Vector2(1, -1.43051e-06)
@@ -261,12 +263,12 @@ shape = SubResource("CapsuleShape2D_jjlhw")
 [node name="CommandInputField" type="LineEdit" parent="."]
 offset_left = 17.0
 offset_top = -41.0
-offset_right = 126.0
+offset_right = 143.0
 offset_bottom = -15.0
 theme = SubResource("Theme_uixr2")
 theme_override_fonts/font = ExtResource("5_jwyxa")
 theme_override_font_sizes/font_size = 8
-placeholder_text = "enter the word"
+placeholder_text = "enter a command"
 expand_to_text_length = true
 shortcut_keys_enabled = false
 drag_and_drop_selection_enabled = false
@@ -278,10 +280,10 @@ position = Vector2(1, 10.5)
 target_position = Vector2(10.5, 1)
 
 [node name="WordLabel" type="Label" parent="."]
-offset_left = -86.5
-offset_top = -68.0
-offset_right = 86.5
-offset_bottom = -45.0
+offset_left = -84.0
+offset_top = -73.5
+offset_right = 89.0
+offset_bottom = -50.5
 theme = SubResource("Theme_n8uyc")
 text = "WordLabel"
 label_settings = SubResource("LabelSettings_5o0pb")
@@ -289,6 +291,3 @@ horizontal_alignment = 1
 vertical_alignment = 1
 autowrap_mode = 3
 uppercase = true
-
-[node name="character state machine" type="Node" parent="."]
-script = ExtResource("5_m2wcr")
