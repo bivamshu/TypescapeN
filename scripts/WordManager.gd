@@ -1,32 +1,43 @@
-#WordManager.gd
 extends Node
 
-var jump_words = []
+class_name WordManager
+
+var jump_words = []  # Remove type hint for Array[String] as it's causing issues
 var current_word = ""
 var previous_word = ""
+
+const WORDS_FILE_PATH = "res://data/jump_words.txt"
 
 func _ready():
 	load_words()
 	pick_random_word()
 
 func load_words():
-	var file = FileAccess.open("res://data/jump_words.txt", FileAccess.READ)
-	if file:
-		print("file found successfully")
+	if FileAccess.file_exists(WORDS_FILE_PATH):
+		print("file found")
+		var file = FileAccess.open(WORDS_FILE_PATH, FileAccess.READ)
 		while !file.eof_reached():
 			var line = file.get_line().strip_edges()
-			if line != "":
+			if line:
 				jump_words.append(line)
 	else:
-		print("file not found")
+		push_error("Words file not found at: " + WORDS_FILE_PATH)
+
 func pick_random_word() -> String:
+	print("picking words")
+	if jump_words.is_empty():
+		print(jump_words)
+		return ""
+	print(jump_words)
+	var new_word = ""
+	# Keep trying until we get a different word
+	while new_word == "" or new_word == current_word:
+		new_word = jump_words[randi() % jump_words.size()]
+	
 	previous_word = current_word
-	if jump_words.size() > 0:
-		current_word = jump_words[randi() % jump_words.size()]
-		if previous_word == current_word:
-			pick_random_word() 	
-		return current_word
-	return ""
+	current_word = new_word
+	print("current words : ", current_word)
+	return current_word
 
 func check_word(input: String) -> bool:
 	return input.to_lower() == current_word.to_lower()

@@ -1,13 +1,13 @@
-[gd_scene load_steps=8 format=4 uid="uid://duseynrctimsi"]
+[gd_scene load_steps=8 format=4 uid="uid://ccusbykdqrj56"]
 
-[ext_resource type="PackedScene" uid="uid://g05pj8xrvd8u" path="res://scenes/Area2D.tscn" id="3_5cf3d"]
-[ext_resource type="Texture2D" uid="uid://dx3ls2ijq4llx" path="res://assets/Tilemap assets/Default/Tilemap/tilemap.png" id="3_jdlb0"]
-[ext_resource type="PackedScene" uid="uid://bqajbk163myjh" path="res://scenes/character.tscn" id="4_52wpr"]
+[ext_resource type="Texture2D" uid="uid://dx3ls2ijq4llx" path="res://assets/Tilemap assets/Default/Tilemap/tilemap.png" id="1_ff160"]
+[ext_resource type="PackedScene" uid="uid://bqajbk163myjh" path="res://scenes/character.tscn" id="2_njmia"]
+[ext_resource type="PackedScene" uid="uid://g05pj8xrvd8u" path="res://scenes/Area2D.tscn" id="3_dchru"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_vndwr"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_qo5kn"]
-texture = ExtResource("3_jdlb0")
+texture = ExtResource("1_ff160")
 separation = Vector2i(1, 1)
 texture_region_size = Vector2i(8, 8)
 0:0/0 = 0
@@ -268,8 +268,8 @@ tile_set = SubResource("TileSet_yn85q")
 position = Vector2(36, 637)
 target_position = Vector2(-12, 0)
 
-[node name="player" parent="." instance=ExtResource("4_52wpr")]
-position = Vector2(15, 634)
+[node name="player" parent="." instance=ExtResource("2_njmia")]
+position = Vector2(16, 636)
 scale = Vector2(0.57, 0.57)
 
 [node name="Camera2D" type="Camera2D" parent="player"]
@@ -278,5 +278,5 @@ zoom = Vector2(2.81, 2.81)
 position_smoothing_enabled = true
 script = SubResource("GDScript_o1y8b")
 
-[node name="Area2d" parent="." instance=ExtResource("3_5cf3d")]
+[node name="Area2d" parent="." instance=ExtResource("3_dchru")]
 position = Vector2(2646, 703)
