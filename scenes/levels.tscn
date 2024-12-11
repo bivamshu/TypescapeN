@@ -1,0 +1,39 @@
+[gd_scene load_steps=3 format=3 uid="uid://difxnc65k285i"]
+
+[ext_resource type="PackedScene" uid="uid://b3t1lqr856byp" path="res://scenes/Home_Page.tscn" id="1_41l32"]
+
+[sub_resource type="GDScript" id="GDScript_xrlu4"]
+resource_local_to_scene = true
+script/source = "extends Button
+
+func _on_Start_pressed():
+	# Ensure the path is correct for the levels scene
+	get_tree().change_scene_to_file(\"res://scenes/levels.tscn\")
+	print(\"Start button pressed\")
+"
+
+[node name="Control" instance=ExtResource("1_41l32")]
+
+[node name="Start" parent="VBoxContainer" index="2"]
+text = "Level 1"
+script = SubResource("GDScript_xrlu4")
+
+[node name="Leaderboard" parent="VBoxContainer" index="3"]
+text = "Level 2"
+
+[node name="Tutorial" parent="VBoxContainer" index="4"]
+text = "Level 3
+
+"
+
+[node name="setting" parent="VBoxContainer" index="5"]
+text = "Level 4
+
+"
+
+[node name="Quit" parent="VBoxContainer" index="6"]
+text = "Level 5
+
+"
+
+[connection signal="pressed" from="VBoxContainer/Start" to="VBoxContainer/Start" method="_on_Start_pressed"]

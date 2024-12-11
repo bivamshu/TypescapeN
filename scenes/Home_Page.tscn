@@ -1,0 +1,61 @@
+[gd_scene load_steps=3 format=3 uid="uid://b3t1lqr856byp"]
+
+[ext_resource type="Texture2D" uid="uid://m1vwjyssdhco" path="res://assets/Home_Page/main.jpg" id="1_sd8nn"]
+[ext_resource type="Script" path="res://scripts/start.gd" id="2_opv5p"]
+
+[node name="Control" type="Node2D"]
+
+[node name="TextureRect" type="TextureRect" parent="."]
+texture_filter = 1
+offset_right = 1154.0
+offset_bottom = 645.0
+expand_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+custom_minimum_size = Vector2(100, 0)
+offset_left = 314.0
+offset_top = 88.0
+offset_right = 826.0
+offset_bottom = 590.0
+theme_override_constants/separation = 7
+alignment = 1
+
+[node name="Background" type="Sprite2D" parent="VBoxContainer"]
+modulate = Color(0.944467, 0.856375, 0.854158, 1)
+position = Vector2(264, 231.5)
+scale = Vector2(2.314, 2.35943)
+texture = ExtResource("1_sd8nn")
+
+[node name="Title" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 0
+theme_override_colors/font_color = Color(0.548135, 0.758955, 0.92654, 1)
+theme_override_font_sizes/font_size = 72
+text = "TYPESCAPE"
+
+[node name="Start" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+text = "Start"
+script = ExtResource("2_opv5p")
+
+[node name="Leaderboard" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+text = "Lederboard"
+
+[node name="Tutorial" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+text = "Tutorial
+"
+
+[node name="setting" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+text = "Setting
+"
+
+[node name="Quit" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+text = "Quit
+"
+
+[connection signal="pressed" from="VBoxContainer/Start" to="VBoxContainer/Start" method="_on_Start_pressed"]
