@@ -4,10 +4,13 @@ extends CharacterBody2D
 @onready var sprite = $AnimatedSprite2D
 @onready var command_input = $CommandInputField
 @onready var wall_detector = $WallDetector
+@onready var ceiling_detector = $CeilingDetector
 @onready var word_label = $WordLabel
 @onready var timer = $Timer
 @onready var startup_timer = $Timer
 @onready var countdown_label = $CountdownLabel
+@onready var slider_coillsion = $slider_collision
+@onready var normal_collider = $CollisionShape2D
 
 var gravity = 500
 var jump_velocity = -125
@@ -16,6 +19,7 @@ var is_jumping = false
 var word_manager
 var command_handler
 var countdown_time = 3
+var is_sliding = false
 	
 func _ready():
 	# Initial setup
@@ -85,6 +89,13 @@ func _check_wall_ahead():
 	else:
 		return false
 
+func _check_ceiling_ahead():
+	if ceiling_detector.is_colliding() :
+		var collider = ceiling_detector.get_collider()
+		return true
+	else:
+		return false
+
 func _show_jump_prompt():
 	word_label.visible = true
 	if !word_label.text:
@@ -110,17 +121,37 @@ func _toggle_command_input():
 func _update_animation():
 	if not is_on_floor():
 		sprite.play("jump")
-	elif velocity.x != 0:
+	elif velocity.x != 0 and not is_sliding:
 		sprite.play("run")
+	elif is_sliding and velocity.x != 0:
+		sprite.play("slide")
 	else:
 		sprite.play("idle")
 
 func jump():
+	print("jumping")
 	if is_on_floor():
 		velocity.y = jump_velocity
 		is_jumping = true
 		sprite.play("jump")
 
+func slide():
+	print("sliding")
+	if is_on_floor():
+		is_sliding = true
+		slider_coillsion.disabled = false
+		normal_collider.disabled = true
+		sprite.play("slide")
+		
+		# Create a timer to reset sliding after some second
+		var slide_timer = get_tree().create_timer(0.6)
+		slide_timer.timeout.connect(func():
+			is_sliding = false
+			slider_coillsion.disabled = true
+			normal_collider.disabled = false
+			sprite.play("run") 
+		)
+	
 func update_word_display():
 	var new_word = word_manager.pick_random_word()
 	word_label.text = new_word

@@ -24,11 +24,11 @@ func load_words():
 		push_error("Words file not found at: " + WORDS_FILE_PATH)
 
 func pick_random_word() -> String:
-	print("picking words")
+	#print("picking words")
 	if jump_words.is_empty():
-		print(jump_words)
+		#print(jump_words)
 		return ""
-	print(jump_words)
+	#print(jump_words)
 	var new_word = ""
 	# Keep trying until we get a different word
 	while new_word == "" or new_word == current_word:

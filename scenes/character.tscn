@@ -1,7 +1,8 @@
-[gd_scene load_steps=38 format=3 uid="uid://bqajbk163myjh"]
+[gd_scene load_steps=49 format=3 uid="uid://bqajbk163myjh"]
 
 [ext_resource type="Script" path="res://scripts/Player.gd" id="1_k3ag3"]
 [ext_resource type="FontFile" uid="uid://bq67vgs7qy2hl" path="res://assets/fonts/PixelOperator8-Bold.ttf" id="3_bqyrm"]
+[ext_resource type="Texture2D" uid="uid://ddxvei7rdarf4" path="res://assets/New Character/body_sword.png" id="3_v0l2l"]
 [ext_resource type="Texture2D" uid="uid://bn1xlm8awksog" path="res://assets/New Character/body_template.png" id="4_yagx3"]
 [ext_resource type="Script" path="res://scripts/raycast_for_jump.gd" id="5_bu15e"]
 [ext_resource type="FontFile" uid="uid://qhh3ydhtd2fj" path="res://assets/fonts/PixelOperator8.ttf" id="5_jwyxa"]
@@ -110,6 +111,38 @@ region = Rect2(384, 165, 64, 33)
 atlas = ExtResource("4_yagx3")
 region = Rect2(448, 165, 64, 33)
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_d5vcj"]
+atlas = ExtResource("3_v0l2l")
+region = Rect2(0, 160, 64, 40)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qd808"]
+atlas = ExtResource("3_v0l2l")
+region = Rect2(64, 160, 64, 40)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ujbm3"]
+atlas = ExtResource("3_v0l2l")
+region = Rect2(128, 160, 64, 40)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nujc5"]
+atlas = ExtResource("3_v0l2l")
+region = Rect2(192, 160, 64, 40)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ny5y7"]
+atlas = ExtResource("3_v0l2l")
+region = Rect2(256, 160, 64, 40)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_i30hh"]
+atlas = ExtResource("3_v0l2l")
+region = Rect2(320, 160, 64, 40)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ie35n"]
+atlas = ExtResource("3_v0l2l")
+region = Rect2(384, 160, 64, 40)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4iu78"]
+atlas = ExtResource("3_v0l2l")
+region = Rect2(448, 160, 64, 40)
+
 [sub_resource type="SpriteFrames" id="SpriteFrames_s1ruq"]
 animations = [{
 "frames": [],
@@ -209,9 +242,41 @@ animations = [{
 "loop": true,
 "name": &"run",
 "speed": 12.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_d5vcj")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qd808")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ujbm3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_nujc5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ny5y7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_i30hh")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ie35n")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4iu78")
+}],
+"loop": true,
+"name": &"slide",
+"speed": 15.0
 }]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_jjlhw"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_5hvdu"]
+size = Vector2(19.5, 12.5)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_eg1ix"]
 content_margin_left = 6.0
@@ -241,6 +306,10 @@ Label/fonts/font = ExtResource("5_jwyxa")
 
 [sub_resource type="LabelSettings" id="LabelSettings_5o0pb"]
 
+[sub_resource type="LabelSettings" id="LabelSettings_b08i6"]
+font_size = 24
+font_color = Color(0.212305, 0.212305, 0.212305, 1)
+
 [node name="player" type="CharacterBody2D" groups=["player"]]
 z_index = 5
 scale = Vector2(2, 2)
@@ -250,13 +319,18 @@ script = ExtResource("1_k3ag3")
 position = Vector2(1, -1.43051e-06)
 scale = Vector2(1.46066, 1.67222)
 sprite_frames = SubResource("SpriteFrames_s1ruq")
-animation = &"run"
+animation = &"idle"
 autoplay = "idle"
-frame_progress = 0.569378
+frame_progress = 0.692196
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0.5, 2)
 shape = SubResource("CapsuleShape2D_jjlhw")
+
+[node name="slider_collision" type="CollisionShape2D" parent="."]
+position = Vector2(-0.75, 8.75)
+shape = SubResource("RectangleShape2D_5hvdu")
+disabled = true
 
 [node name="CommandInputField" type="LineEdit" parent="."]
 offset_left = 17.0
@@ -282,6 +356,11 @@ position = Vector2(1, 12.5)
 target_position = Vector2(141, 0)
 script = ExtResource("5_bu15e")
 
+[node name="CeilingDetector" type="RayCast2D" parent="."]
+position = Vector2(1, -12.5)
+target_position = Vector2(141, 0)
+script = ExtResource("5_bu15e")
+
 [node name="WordLabel" type="Label" parent="."]
 offset_left = -86.5
 offset_top = -68.0
@@ -296,19 +375,21 @@ autowrap_mode = 3
 uppercase = true
 
 [node name="CountdownLabel" type="Label" parent="."]
-offset_left = 218.0
-offset_top = -160.0
-offset_right = 391.0
-offset_bottom = -137.0
+offset_left = 28.0
+offset_top = -106.5
+offset_right = 232.0
+offset_bottom = -55.5
 theme = SubResource("Theme_n8uyc")
-text = "WordLabel"
-label_settings = SubResource("LabelSettings_5o0pb")
+text = "1"
+label_settings = SubResource("LabelSettings_b08i6")
 horizontal_alignment = 1
 vertical_alignment = 1
 autowrap_mode = 3
+clip_text = true
 uppercase = true
 
 [node name="Timer" type="Timer" parent="."]
 
 [connection signal="child_entered_tree" from="WallDetector" to="WallDetector" method="_on_child_entered_tree"]
+[connection signal="child_entered_tree" from="CeilingDetector" to="CeilingDetector" method="_on_child_entered_tree"]
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
