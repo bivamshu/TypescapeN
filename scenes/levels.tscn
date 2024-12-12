@@ -8,11 +8,20 @@ script/source = "extends Button
 
 func _on_Start_pressed():
 	# Ensure the path is correct for the levels scene
-	get_tree().change_scene_to_file(\"res://scenes/levels.tscn\")
-	print(\"Start button pressed\")
+	get_tree().change_scene_to_file(\"res://scenes/levels/level_1.tscn\")
+	print(\"level 1 pressed\")
+
+
+func _on_level_2_pressed():
+	get_tree().change_scene_to_file(\"res://scenes/levels/level_2.tscn\")
+	print(\"level 2 pressed\")
+	pass # Replace with function body.
 "
 
 [node name="Control" instance=ExtResource("1_41l32")]
+
+[node name="Background" parent="VBoxContainer" index="0"]
+modulate = Color(0.700196, 0.571483, 0.361893, 1)
 
 [node name="Start" parent="VBoxContainer" index="2"]
 text = "Level 1"
@@ -36,4 +45,4 @@ text = "Level 5
 
 "
 
-[connection signal="pressed" from="VBoxContainer/Start" to="VBoxContainer/Start" method="_on_Start_pressed"]
+[connection signal="pressed" from="VBoxContainer/Leaderboard" to="VBoxContainer/Start" method="_on_level_2_pressed"]
