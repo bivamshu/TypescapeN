@@ -47,11 +47,9 @@ script = SubResource("GDScript_xrlu4")
 text = "Level 2"
 
 [node name="Setting" parent="VBoxContainer" index="3"]
-text = "Level  3
-"
+text = "Level 3"
 
 [node name="Quit" parent="VBoxContainer" index="4"]
-text = "Level 4
-"
+text = "Level 4"
 
 [connection signal="pressed" from="VBoxContainer/Leaderboard" to="VBoxContainer/Start" method="_on_level_2_pressed"]
