@@ -4,7 +4,7 @@
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_3tby0"]
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_ecsye"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_4xo0l"]
 
 [sub_resource type="Theme" id="Theme_cwa1i"]
 
@@ -31,11 +31,17 @@ func _on_level_2_pressed():
 [node name="AnimatedSprite2D" parent="Sprite2D" index="0"]
 texture_filter = 1
 material = SubResource("ShaderMaterial_3tby0")
+autoplay = "default"
+frame_progress = 0.403529
+
+[node name="VBoxContainer" parent="." index="2"]
+offset_left = 221.0
+offset_top = 84.0
+offset_right = 947.0
+offset_bottom = 594.0
 
 [node name="Title" parent="VBoxContainer" index="0"]
-modulate = Color(0.429513, 1, 0.871177, 1)
-texture_filter = 1
-material = SubResource("ShaderMaterial_ecsye")
+material = SubResource("ShaderMaterial_4xo0l")
 theme = SubResource("Theme_cwa1i")
 theme_override_styles/normal = SubResource("StyleBoxEmpty_s5j7d")
 
