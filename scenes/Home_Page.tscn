@@ -1,4 +1,4 @@
-[gd_scene load_steps=50 format=3 uid="uid://b3t1lqr856byp"]
+[gd_scene load_steps=53 format=3 uid="uid://b3t1lqr856byp"]
 
 [ext_resource type="Texture2D" uid="uid://ch084kp0t0yuq" path="res://assets/Home_Page/frame_apngframe01.png" id="1_151ox"]
 [ext_resource type="Script" path="res://scripts/home.gd" id="1_gucr0"]
@@ -47,6 +47,7 @@
 [ext_resource type="Texture2D" uid="uid://cji5h7liv6tx5" path="res://assets/Home_Page/frame_apngframe44.png" id="43_jdi23"]
 [ext_resource type="Texture2D" uid="uid://ctuot4txu7ii5" path="res://assets/Home_Page/frame_apngframe45.png" id="44_gitme"]
 [ext_resource type="Texture2D" uid="uid://ola2rl1kgek5" path="res://assets/Home_Page/frame_apngframe46.png" id="45_6ukm2"]
+[ext_resource type="FontFile" uid="uid://dgsrg1r6y53js" path="res://assets/fonts/PixelOperator8-Bold.ttf" id="47_jpsih"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_6p5tp"]
 animations = [{
@@ -200,17 +201,11 @@ animations = [{
 "speed": 8.0
 }]
 
-[sub_resource type="FontFile" id="FontFile_8sl8t"]
-cache/0/80/0/ascent = 0.0
-cache/0/80/0/descent = 0.0
-cache/0/80/0/underline_position = 0.0
-cache/0/80/0/underline_thickness = 0.0
-cache/0/80/0/scale = 1.0
-cache/0/16/0/ascent = 0.0
-cache/0/16/0/descent = 0.0
-cache/0/16/0/underline_position = 0.0
-cache/0/16/0/underline_thickness = 0.0
-cache/0/16/0/scale = 1.0
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_0n4ic"]
+
+[sub_resource type="Theme" id="Theme_q1vo5"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ceq4j"]
 
 [node name="Control" type="Node2D"]
 
@@ -231,24 +226,30 @@ sprite_frames = SubResource("SpriteFrames_6p5tp")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
 custom_minimum_size = Vector2(100, 0)
-offset_left = 314.0
-offset_top = 88.0
-offset_right = 826.0
-offset_bottom = 590.0
+offset_left = 228.0
+offset_top = 78.0
+offset_right = 948.0
+offset_bottom = 592.0
 theme_override_constants/separation = 7
 alignment = 1
 
 [node name="Title" type="Label" parent="VBoxContainer"]
-modulate = Color(0.65536, 0.940075, 1, 1)
+modulate = Color(0.402331, 0.986625, 1, 1)
+show_behind_parent = true
+texture_filter = 1
+material = SubResource("ShaderMaterial_0n4ic")
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 0
-theme_override_colors/font_color = Color(0, 0.873419, 0.454015, 1)
+theme = SubResource("Theme_q1vo5")
+theme_override_colors/font_color = Color(1, 1, 0, 1)
 theme_override_colors/font_shadow_color = Color(0, 0, 0.411765, 1)
 theme_override_colors/font_outline_color = Color(0.286892, 0.818789, 1, 1)
-theme_override_fonts/font = SubResource("FontFile_8sl8t")
+theme_override_fonts/font = ExtResource("47_jpsih")
 theme_override_font_sizes/font_size = 80
+theme_override_styles/normal = SubResource("StyleBoxEmpty_ceq4j")
 text = "TYPESCAPE"
+horizontal_alignment = 1
 
 [node name="Start" type="Button" parent="VBoxContainer"]
 layout_mode = 2
