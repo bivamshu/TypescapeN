@@ -293,4 +293,3 @@ position = Vector2(580, 322)
 zoom = Vector2(1.24, 1.24)
 
 [connection signal="pressed" from="VBoxContainer/Start" to="VBoxContainer/Start" method="_on_Start_pressed"]
-[connection signal="pressed" from="VBoxContainer/Quit" to="Sprite2D" method="_on_quit_pressed"]

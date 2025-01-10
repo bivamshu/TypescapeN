@@ -31,6 +31,8 @@ func _on_level_2_pressed():
 [node name="AnimatedSprite2D" parent="Sprite2D" index="0"]
 texture_filter = 1
 material = SubResource("ShaderMaterial_3tby0")
+position = Vector2(573.5, 324.5)
+scale = Vector2(2.39792, 2.38889)
 autoplay = "default"
 frame_progress = 0.403529
 
@@ -46,13 +48,16 @@ theme = SubResource("Theme_cwa1i")
 theme_override_styles/normal = SubResource("StyleBoxEmpty_s5j7d")
 
 [node name="Start" parent="VBoxContainer" index="1"]
+theme_override_constants/outline_size = 10
 text = "Level 1"
 script = SubResource("GDScript_xrlu4")
 
 [node name="Leaderboard" parent="VBoxContainer" index="2"]
+theme_override_font_sizes/font_size = 27
 text = "Level 2"
 
 [node name="Setting" parent="VBoxContainer" index="3"]
+theme_override_font_sizes/font_size = 26
 text = "Level 3"
 
 [node name="Quit" parent="VBoxContainer" index="4"]
