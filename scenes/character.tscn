@@ -1,7 +1,7 @@
 [gd_scene load_steps=49 format=3 uid="uid://bqajbk163myjh"]
 
 [ext_resource type="Script" path="res://scripts/Player.gd" id="1_k3ag3"]
-[ext_resource type="FontFile" uid="uid://bq67vgs7qy2hl" path="res://assets/fonts/PixelOperator8-Bold.ttf" id="3_bqyrm"]
+[ext_resource type="FontFile" uid="uid://dgsrg1r6y53js" path="res://assets/fonts/PixelOperator8-Bold.ttf" id="3_bqyrm"]
 [ext_resource type="Texture2D" uid="uid://ddxvei7rdarf4" path="res://assets/New Character/body_sword.png" id="3_v0l2l"]
 [ext_resource type="Texture2D" uid="uid://bn1xlm8awksog" path="res://assets/New Character/body_template.png" id="4_yagx3"]
 [ext_resource type="Script" path="res://scripts/raycast_for_jump.gd" id="5_bu15e"]
