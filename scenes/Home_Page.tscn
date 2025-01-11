@@ -227,34 +227,17 @@ scale = Vector2(2.41875, 2.41852)
 sprite_frames = SubResource("SpriteFrames_6p5tp")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
-custom_minimum_size = Vector2(100, 0)
-offset_left = 228.0
+custom_minimum_size = Vector2(50, 100)
+offset_left = 390.0
 offset_top = 78.0
-offset_right = 948.0
-offset_bottom = 592.0
+offset_right = 770.0
+offset_bottom = 612.0
 size_flags_stretch_ratio = 0.0
 theme_override_constants/separation = 7
 alignment = 1
 
-[node name="Title" type="Label" parent="VBoxContainer"]
-modulate = Color(0.402331, 0.986625, 1, 1)
-show_behind_parent = true
-texture_filter = 1
-material = SubResource("ShaderMaterial_0n4ic")
-layout_mode = 2
-size_flags_horizontal = 4
-size_flags_vertical = 0
-theme = SubResource("Theme_q1vo5")
-theme_override_colors/font_color = Color(1, 1, 0, 1)
-theme_override_colors/font_shadow_color = Color(0, 0, 0.411765, 1)
-theme_override_colors/font_outline_color = Color(0.286892, 0.818789, 1, 1)
-theme_override_fonts/font = ExtResource("47_jpsih")
-theme_override_font_sizes/font_size = 80
-theme_override_styles/normal = SubResource("StyleBoxEmpty_ceq4j")
-text = "TYPESCAPE"
-horizontal_alignment = 1
-
 [node name="Start" type="Button" parent="VBoxContainer"]
+custom_minimum_size = Vector2(5, 5)
 layout_mode = 2
 theme_override_constants/outline_size = 12
 theme_override_constants/h_separation = 12
@@ -262,6 +245,7 @@ theme_override_constants/icon_max_width = 0
 theme_override_fonts/font = ExtResource("48_em755")
 theme_override_font_sizes/font_size = 27
 text = "Start"
+expand_icon = true
 script = ExtResource("2_opv5p")
 
 [node name="Leaderboard" type="Button" parent="VBoxContainer"]
@@ -291,6 +275,30 @@ script = ExtResource("50_8gykx")
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(580, 322)
 zoom = Vector2(1.24, 1.24)
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="."]
+offset_top = 138.0
+offset_right = 1160.0
+offset_bottom = 242.0
+alignment = 1
+
+[node name="Title" type="Label" parent="VBoxContainer2"]
+modulate = Color(0.402331, 0.986625, 1, 1)
+show_behind_parent = true
+texture_filter = 1
+material = SubResource("ShaderMaterial_0n4ic")
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 0
+theme = SubResource("Theme_q1vo5")
+theme_override_colors/font_color = Color(1, 1, 0, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0.411765, 1)
+theme_override_colors/font_outline_color = Color(0.286892, 0.818789, 1, 1)
+theme_override_fonts/font = ExtResource("47_jpsih")
+theme_override_font_sizes/font_size = 80
+theme_override_styles/normal = SubResource("StyleBoxEmpty_ceq4j")
+text = "TYPESCAPE"
+horizontal_alignment = 1
 
 [connection signal="pressed" from="VBoxContainer/Start" to="VBoxContainer/Start" method="_on_Start_pressed"]
 [connection signal="pressed" from="VBoxContainer/Quit" to="Sprite2D" method="_on_quit_pressed"]

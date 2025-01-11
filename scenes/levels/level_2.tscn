@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=4 uid="uid://ccusbykdqrj56"]
+[gd_scene load_steps=8 format=4 uid="uid://bj8wd05jpeldb"]
 
 [ext_resource type="Texture2D" uid="uid://dx3ls2ijq4llx" path="res://assets/Tilemap assets/Default/Tilemap/tilemap.png" id="1_ff160"]
 [ext_resource type="PackedScene" uid="uid://bqajbk163myjh" path="res://scenes/character.tscn" id="2_njmia"]
@@ -24,8 +24,11 @@ texture_region_size = Vector2i(8, 8)
 8:0/0 = 0
 9:0/0 = 0
 10:0/0 = 0
+10:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-4, -4, 4, -4, 4, 4, -4, 4)
 11:0/0 = 0
+11:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-4, -4, 4, -4, 4, 4, -4, 4)
 12:0/0 = 0
+12:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-4, -4, 4, -4, 4, 4, -4, 4)
 13:0/0 = 0
 14:0/0 = 0
 15:0/0 = 0
@@ -43,8 +46,11 @@ texture_region_size = Vector2i(8, 8)
 8:1/0 = 0
 9:1/0 = 0
 10:1/0 = 0
+10:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-4, -4, 4, -4, 4, 4, -4, 4)
 11:1/0 = 0
+11:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-4, -4, 4, -4, 4, 4, -4, 4)
 12:1/0 = 0
+12:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-4, -4, 4, -4, 4, 4, -4, 4)
 13:1/0 = 0
 14:1/0 = 0
 15:1/0 = 0
@@ -62,8 +68,11 @@ texture_region_size = Vector2i(8, 8)
 8:2/0 = 0
 9:2/0 = 0
 10:2/0 = 0
+10:2/0/physics_layer_0/polygon_0/points = PackedVector2Array(-4, -4, 4, -4, 4, 4, -4, 4)
 11:2/0 = 0
+11:2/0/physics_layer_0/polygon_0/points = PackedVector2Array(-4, -4, 4, -4, 4, 4, -4, 4)
 12:2/0 = 0
+12:2/0/physics_layer_0/polygon_0/points = PackedVector2Array(-4, -4, 4, -4, 4, 4, -4, 4)
 13:2/0 = 0
 14:2/0 = 0
 15:2/0 = 0
@@ -269,7 +278,7 @@ position = Vector2(36, 637)
 target_position = Vector2(-12, 0)
 
 [node name="player" parent="." instance=ExtResource("2_njmia")]
-position = Vector2(16, 636)
+position = Vector2(14, 635)
 scale = Vector2(0.57, 0.57)
 
 [node name="Camera2D" type="Camera2D" parent="player"]

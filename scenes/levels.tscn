@@ -1,14 +1,8 @@
-[gd_scene load_steps=7 format=3 uid="uid://difxnc65k285i"]
+[gd_scene load_steps=4 format=3 uid="uid://difxnc65k285i"]
 
 [ext_resource type="PackedScene" uid="uid://b3t1lqr856byp" path="res://scenes/Home_Page.tscn" id="1_41l32"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_3tby0"]
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_4xo0l"]
-
-[sub_resource type="Theme" id="Theme_cwa1i"]
-
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_s5j7d"]
 
 [sub_resource type="GDScript" id="GDScript_xrlu4"]
 resource_local_to_scene = true
@@ -37,30 +31,28 @@ autoplay = "default"
 frame_progress = 0.403529
 
 [node name="VBoxContainer" parent="." index="2"]
-offset_left = 221.0
+offset_left = 392.0
 offset_top = 84.0
-offset_right = 947.0
-offset_bottom = 594.0
+offset_right = 775.0
+offset_bottom = 610.0
 
-[node name="Title" parent="VBoxContainer" index="0"]
-material = SubResource("ShaderMaterial_4xo0l")
-theme = SubResource("Theme_cwa1i")
-theme_override_styles/normal = SubResource("StyleBoxEmpty_s5j7d")
-
-[node name="Start" parent="VBoxContainer" index="1"]
+[node name="Start" parent="VBoxContainer" index="0"]
 theme_override_constants/outline_size = 10
 text = "Level 1"
 script = SubResource("GDScript_xrlu4")
 
-[node name="Leaderboard" parent="VBoxContainer" index="2"]
+[node name="Leaderboard" parent="VBoxContainer" index="1"]
 theme_override_font_sizes/font_size = 27
 text = "Level 2"
 
-[node name="Setting" parent="VBoxContainer" index="3"]
+[node name="Setting" parent="VBoxContainer" index="2"]
 theme_override_font_sizes/font_size = 26
 text = "Level 3"
 
-[node name="Quit" parent="VBoxContainer" index="4"]
+[node name="Quit" parent="VBoxContainer" index="3"]
 text = "Level 4"
+
+[node name="Camera2D" parent="." index="3"]
+position = Vector2(580, 319)
 
 [connection signal="pressed" from="VBoxContainer/Leaderboard" to="VBoxContainer/Start" method="_on_level_2_pressed"]
