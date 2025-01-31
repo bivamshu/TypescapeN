@@ -1,0 +1,65 @@
+[gd_scene load_steps=4 format=3 uid="uid://cxwjcefqfvse0"]
+
+[ext_resource type="Script" path="res://scenes/level_complete_scene.gd" id="1_ee2ao"]
+[ext_resource type="FontFile" uid="uid://dgsrg1r6y53js" path="res://assets/fonts/PixelOperator8-Bold.ttf" id="2_dj7td"]
+[ext_resource type="FontFile" uid="uid://qhh3ydhtd2fj" path="res://assets/fonts/PixelOperator8.ttf" id="3_olgjr"]
+
+[node name="Node2D" type="Node2D"]
+script = ExtResource("1_ee2ao")
+
+[node name="Level Complete" type="Label" parent="."]
+offset_left = 427.0
+offset_top = 178.0
+offset_right = 757.0
+offset_bottom = 212.0
+theme_override_fonts/font = ExtResource("2_dj7td")
+theme_override_font_sizes/font_size = 24
+text = "Level Complete!
+"
+
+[node name="WPMLabel" type="Label" parent="."]
+offset_left = 469.0
+offset_top = 317.0
+offset_right = 683.0
+offset_bottom = 340.0
+theme_override_fonts/font = ExtResource("3_olgjr")
+text = "Words Per Minute
+"
+
+[node name="NextLevelButton" type="Button" parent="."]
+offset_left = 484.0
+offset_top = 441.0
+offset_right = 659.0
+offset_bottom = 472.0
+theme_override_fonts/font = ExtResource("3_olgjr")
+text = "Next Level"
+
+[node name="MainMenuButton" type="Button" parent="."]
+offset_left = 755.0
+offset_top = 439.0
+offset_right = 886.0
+offset_bottom = 470.0
+theme_override_fonts/font = ExtResource("3_olgjr")
+text = "Main Menu
+"
+
+[node name="Level" type="Label" parent="."]
+offset_left = 537.0
+offset_top = 236.0
+offset_right = 603.0
+offset_bottom = 259.0
+theme_override_fonts/font = ExtResource("3_olgjr")
+text = "Level"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ReplayButton" type="Button" parent="."]
+offset_left = 315.0
+offset_top = 443.0
+offset_right = 423.0
+offset_bottom = 474.0
+theme_override_fonts/font = ExtResource("3_olgjr")
+text = "Replay
+"
+
+[connection signal="pressed" from="ReplayButton" to="." method="_on_replay_pressed"]

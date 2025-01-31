@@ -222,7 +222,7 @@ metadata/_edit_use_anchors_ = true
 script = ExtResource("1_gucr0")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Sprite2D"]
-position = Vector2(578.5, 328.5)
+position = Vector2(581, 331)
 scale = Vector2(2.41875, 2.41852)
 sprite_frames = SubResource("SpriteFrames_6p5tp")
 

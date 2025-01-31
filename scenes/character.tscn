@@ -1,11 +1,13 @@
-[gd_scene load_steps=49 format=3 uid="uid://bqajbk163myjh"]
+[gd_scene load_steps=44 format=3 uid="uid://bqajbk163myjh"]
 
 [ext_resource type="Script" path="res://scripts/Player.gd" id="1_k3ag3"]
 [ext_resource type="FontFile" uid="uid://dgsrg1r6y53js" path="res://assets/fonts/PixelOperator8-Bold.ttf" id="3_bqyrm"]
-[ext_resource type="Texture2D" uid="uid://ddxvei7rdarf4" path="res://assets/New Character/body_sword.png" id="3_v0l2l"]
+[ext_resource type="Texture2D" uid="uid://cku4rxba62rjk" path="res://assets/New Character/slide.png" id="3_wf0lv"]
 [ext_resource type="Texture2D" uid="uid://bn1xlm8awksog" path="res://assets/New Character/body_template.png" id="4_yagx3"]
 [ext_resource type="Script" path="res://scripts/raycast_for_jump.gd" id="5_bu15e"]
 [ext_resource type="FontFile" uid="uid://qhh3ydhtd2fj" path="res://assets/fonts/PixelOperator8.ttf" id="5_jwyxa"]
+[ext_resource type="AudioStream" uid="uid://coxro3ju6xnv5" path="res://assets/sounds/jump2.wav" id="7_ppo7j"]
+[ext_resource type="AudioStream" uid="uid://bsdiacifd4wjn" path="res://assets/sounds/load.wav" id="8_xe3vb"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_npiow"]
 atlas = ExtResource("4_yagx3")
@@ -111,37 +113,9 @@ region = Rect2(384, 165, 64, 33)
 atlas = ExtResource("4_yagx3")
 region = Rect2(448, 165, 64, 33)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_d5vcj"]
-atlas = ExtResource("3_v0l2l")
-region = Rect2(0, 160, 64, 40)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_qd808"]
-atlas = ExtResource("3_v0l2l")
-region = Rect2(64, 160, 64, 40)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_ujbm3"]
-atlas = ExtResource("3_v0l2l")
-region = Rect2(128, 160, 64, 40)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_nujc5"]
-atlas = ExtResource("3_v0l2l")
-region = Rect2(192, 160, 64, 40)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_ny5y7"]
-atlas = ExtResource("3_v0l2l")
-region = Rect2(256, 160, 64, 40)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_i30hh"]
-atlas = ExtResource("3_v0l2l")
-region = Rect2(320, 160, 64, 40)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_ie35n"]
-atlas = ExtResource("3_v0l2l")
-region = Rect2(384, 160, 64, 40)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_4iu78"]
-atlas = ExtResource("3_v0l2l")
-region = Rect2(448, 160, 64, 40)
+[sub_resource type="AtlasTexture" id="AtlasTexture_cq7a7"]
+atlas = ExtResource("3_wf0lv")
+region = Rect2(820, 25, 41, 25)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_s1ruq"]
 animations = [{
@@ -245,28 +219,7 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_d5vcj")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_qd808")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_ujbm3")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_nujc5")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_ny5y7")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_i30hh")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_ie35n")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_4iu78")
+"texture": SubResource("AtlasTexture_cq7a7")
 }],
 "loop": true,
 "name": &"slide",
@@ -304,15 +257,19 @@ LineEdit/styles/read_only = SubResource("StyleBoxFlat_eg1ix")
 Label/font_sizes/font_size = 12
 Label/fonts/font = ExtResource("5_jwyxa")
 
-[sub_resource type="LabelSettings" id="LabelSettings_5o0pb"]
-
 [sub_resource type="LabelSettings" id="LabelSettings_b08i6"]
 font_size = 24
 font_color = Color(0.212305, 0.212305, 0.212305, 1)
 
+[sub_resource type="Curve" id="Curve_t7axn"]
+max_value = 5.0
+_data = [Vector2(0.0337079, 1.75824), 0.0, 0.0, 0, 0, Vector2(0.842697, 1.53846), 0.0, 0.0, 0, 0]
+point_count = 2
+
 [node name="player" type="CharacterBody2D" groups=["player"]]
 z_index = 5
 scale = Vector2(2, 2)
+collision_mask = 3
 script = ExtResource("1_k3ag3")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
@@ -321,7 +278,6 @@ scale = Vector2(1.46066, 1.67222)
 sprite_frames = SubResource("SpriteFrames_s1ruq")
 animation = &"idle"
 autoplay = "idle"
-frame_progress = 0.692196
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0.5, 2)
@@ -353,26 +309,15 @@ target_position = Vector2(11, 0)
 
 [node name="WallDetector" type="RayCast2D" parent="."]
 position = Vector2(1, 12.5)
-target_position = Vector2(141, 0)
+target_position = Vector2(15, 0)
+collision_mask = 3
+collide_with_areas = true
 script = ExtResource("5_bu15e")
 
 [node name="CeilingDetector" type="RayCast2D" parent="."]
 position = Vector2(1, -12.5)
 target_position = Vector2(141, 0)
 script = ExtResource("5_bu15e")
-
-[node name="WordLabel" type="Label" parent="."]
-offset_left = -86.5
-offset_top = -68.0
-offset_right = 86.5
-offset_bottom = -45.0
-theme = SubResource("Theme_n8uyc")
-text = "WordLabel"
-label_settings = SubResource("LabelSettings_5o0pb")
-horizontal_alignment = 1
-vertical_alignment = 1
-autowrap_mode = 3
-uppercase = true
 
 [node name="CountdownLabel" type="Label" parent="."]
 offset_left = 28.0
@@ -389,6 +334,91 @@ clip_text = true
 uppercase = true
 
 [node name="Timer" type="Timer" parent="."]
+
+[node name="Jump Particles" type="CPUParticles2D" parent="."]
+position = Vector2(0.5, 14.5)
+emitting = false
+amount = 5
+lifetime = 0.5
+one_shot = true
+explosiveness = 1.0
+direction = Vector2(0, 0)
+spread = 180.0
+gravity = Vector2(0, 0)
+initial_velocity_min = 50.0
+initial_velocity_max = 50.0
+scale_amount_min = 0.0
+scale_amount_max = 4.0
+scale_amount_curve = SubResource("Curve_t7axn")
+color = Color(1, 0.639216, 0, 1)
+
+[node name="JumpSound" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("7_ppo7j")
+
+[node name="CountdownSound" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("8_xe3vb")
+
+[node name="WPMLabel" type="Label" parent="."]
+offset_left = 314.0
+offset_top = -300.0
+offset_right = 486.0
+offset_bottom = -232.0
+theme_override_fonts/font = ExtResource("5_jwyxa")
+theme_override_font_sizes/font_size = 25
+text = "WPM: "
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="ScoreLabel" type="Label" parent="CanvasLayer"]
+offset_left = 150.0
+offset_top = -545.0
+offset_right = 360.0
+offset_bottom = -497.0
+theme_override_fonts/font = ExtResource("5_jwyxa")
+theme_override_font_sizes/font_size = 48
+text = "Score"
+
+[node name="TimerLabel" type="Label" parent="."]
+offset_left = -192.0
+offset_top = -278.5
+offset_right = -152.0
+offset_bottom = -255.5
+theme_override_fonts/font = ExtResource("5_jwyxa")
+theme_override_font_sizes/font_size = 25
+text = "Time"
+
+[node name="RunLabel" type="RichTextLabel" parent="."]
+offset_left = 176.0
+offset_top = -82.0
+offset_right = 273.0
+offset_bottom = -42.0
+theme_override_fonts/normal_font = ExtResource("5_jwyxa")
+
+[node name="JumpLabel" type="RichTextLabel" parent="."]
+offset_left = 338.0
+offset_top = -85.0
+offset_right = 458.0
+offset_bottom = -45.0
+theme_override_fonts/normal_font = ExtResource("5_jwyxa")
+
+[node name="Run" type="Label" parent="."]
+offset_left = 174.0
+offset_top = -111.0
+offset_right = 216.0
+offset_bottom = -88.0
+theme_override_fonts/font = ExtResource("5_jwyxa")
+text = "Run"
+
+[node name="Jump" type="Label" parent="."]
+offset_left = 338.5
+offset_top = -113.5
+offset_right = 398.5
+offset_bottom = -90.5
+theme_override_fonts/font = ExtResource("5_jwyxa")
+text = "Jump
+"
 
 [connection signal="child_entered_tree" from="WallDetector" to="WallDetector" method="_on_child_entered_tree"]
 [connection signal="child_entered_tree" from="CeilingDetector" to="CeilingDetector" method="_on_child_entered_tree"]

@@ -56,3 +56,4 @@ text = "Level 4"
 position = Vector2(580, 319)
 
 [connection signal="pressed" from="VBoxContainer/Leaderboard" to="VBoxContainer/Start" method="_on_level_2_pressed"]
+[connection signal="pressed" from="VBoxContainer/Setting" to="Sprite2D" method="_on_setting_pressed"]
