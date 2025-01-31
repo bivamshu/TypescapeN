@@ -244,7 +244,6 @@ func _reset_word(command):
 func _stop_running():
 	print("triggered")
 	if get_parent().has_node("Node2D"):
-		print("here")
 		var level_complete_area = get_parent().get_node("Node2D")
 		if level_complete_area.overlaps_body(self):
 			print("Player overlapped Area2D - Triggering Level Complete")
